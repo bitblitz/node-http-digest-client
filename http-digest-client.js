@@ -25,9 +25,9 @@ var HTTPDigest = function () {
   //
   HTTPDigest.prototype.request = function (options, callback) {
     var self = this;
-    http.request(options, function (res) {
+    return http.request(options, function (res) {
       self._handleResponse(options, res, callback);
-    }).end();
+    });
   };
 
   //
@@ -143,4 +143,3 @@ var HTTPDigest = function () {
 module.exports = function createDigestClient(username, password, https) {
   return new HTTPDigest(username, password, https);
 };
-
